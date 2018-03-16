@@ -20,7 +20,7 @@ public class HomePage extends BasePage {
     }
     WebDriverWait wait = new WebDriverWait(driver, 10);
     
-    public List<WebElement> photos = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.className("photo"))); //abstarcted so that getRandomPhoto and validateRandomSelectionStats can use the same photo list
+    public List<WebElement> photos = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.className("photo"))); //abstracted so that getRandomPhoto and validateRandomSelectionStats can use the same photo list
 
     public WebElement getCorrectPhoto(){
         sleep(4000);
@@ -102,7 +102,7 @@ public class HomePage extends BasePage {
             count++;
         }        sleep(4000);
         Assert.assertEquals(correct, Integer.parseInt(driver.findElement(By.id("stats")).findElement(By.className("correct")).getText())); //compares the correct count to the correct stat shown
-        Assert.assertEquals(count, Integer.parseInt(driver.findElement(By.className("attempts")).getText())); //compares the attempts to the amount of iterations of the loop
+        Assert.assertEquals(count, Integer.parseInt(driver.findElement(By.className("attempts")).getText())); //compares the attempts to the number of iterations of the loop
     }
     public void validatePhotosAndNameChangeOnCorrect(){
         String Person = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("name"))).getText();
@@ -115,7 +115,7 @@ public class HomePage extends BasePage {
         Assert.assertNotEquals(Person, newPerson);
 
     }
-    public void validateMissedNamesAppearMoreOften (int runs)//I figured that if missed the first person, and then tracked that person over the next x amount of names given, the name should appear more than if I tracked the occurrences of a name that I answered correctly on for the same number of runs but I didn't find that to be the case. I need  more information on the requirements for this feature and how it was implmented
+    public void validateMissedNamesAppearMoreOften (int runs)//I figured that if i missed the first person, and then tracked that person over the next x amount of names given, the name should appear more than if I tracked the occurrences of a name that I answered correctly on over the same number of runs but I didn't find that to be the case. I need  more information on the requirements for this feature and how it was implemented
     {
         int count = 0;
         int firstRun = 0;
