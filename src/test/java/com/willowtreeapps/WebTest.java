@@ -60,11 +60,11 @@ public class WebTest {
         new HomePage(driver)
                 .validatePhotosAndNameChangeOnCorrect();
     }
-    @Test
+    /*@Test
     public void test_inoorrect_answeres_occur_more_often(){
         new HomePage(driver)
                 .validateMissedNamesAppearMoreOften(50);
-    }
+    }*/
 
 
     @After
