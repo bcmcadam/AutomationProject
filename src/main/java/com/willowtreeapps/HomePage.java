@@ -94,15 +94,16 @@ public class HomePage extends BasePage {
 
             WebElement choice = getRandomPhoto();
             choice.click();
-            if (choice.getText().contains(driver.findElement(By.id("name")).getText())) {
+            if (choice.getText().contains(driver.findElement(By.id("name")).getText())) { //compares the random choice to the given name to determine if it is correct
                 sleep(5000);
                 correct++;//counts number of correct answers selected
                 photos = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.className("photo"))); //gets a new fresh photo list on selection of a correct answer as the photos are now different
             }
             count++;
-        }        sleep(4000);
+        }        
+        sleep(4000);
         Assert.assertEquals(correct, Integer.parseInt(driver.findElement(By.id("stats")).findElement(By.className("correct")).getText())); //compares the correct count to the correct stat shown
-        Assert.assertEquals(count, Integer.parseInt(driver.findElement(By.className("attempts")).getText())); //compares the attempts to the number of iterations of the loop
+        Assert.assertEquals(count, Integer.parseInt(driver.findElement(By.className("attempts")).getText())); //compares the tries stat to the number of iterations of the loop
     }
     public void validatePhotosAndNameChangeOnCorrect(){
         String Person = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("name"))).getText();
